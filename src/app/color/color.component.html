@@ -1,0 +1,54 @@
+<div class="radios">
+    <input type="radio" name="radio" id="blue" value="blue" (click)="onColorChange()">
+    <label for="blue">Blue</label>
+    <input type="radio" name="radio" id="green" value="green" (click)="onColorChanges()">
+    <label for="blue">Green</label>
+  
+    
+  </div>
+  
+   <div class="checks">
+    <h1 class="heading" id="h1">Hello</h1>
+    <input type="number" name="num" id="num" (change)="fontChange($event)">
+    <label for="num">Font Size</label>
+  </div>
+  <div class="buttons">
+    <button (click)="showHeading(1)">Show Heading 1</button>
+    <button (click)="showHeading(2)">Show Heading 2</button>
+    <button (click)="showHeading(3)">Show Heading 3</button>
+    <button (click)="showHeading(4)">Show Heading 4</button>
+    <button (click)="showHeading(5)">Show 5</button>
+  </div>
+  
+  <div class="headings">
+    <h1 *ngIf="currentHeading === 1">Heading 1</h1>
+    <h1 *ngIf="currentHeading === 2">Jeevan</h1>
+    <h1 *ngIf="currentHeading === 3">OK</h1>
+    <h1 *ngIf="currentHeading === 4">Hello</h1>
+    <ng-template [ngIf]="currentHeading===5"><h1>Trivandrum</h1></ng-template>
+  </div>
+  
+  <div class="toggle">
+    <input type="checkbox" name="dark" id="dark" (click)="clickChanges($event)">
+    <label for="dark">Dark Theme</label>
+  </div>
+
+  <div *ngFor="let product of products; index as i; even as isEven; odd as isOdd">
+    <span *ngIf="isEven else template" style="color: blue;">
+        {{i}}
+        {{product.productId}}
+        {{product.description}}
+        {{product.price}}
+    </span>
+    
+        <ng-template #template >
+            <div [style.color]="col">
+            {{i}}
+            {{product.productId}}
+            {{product.description}}
+            {{product.price}}
+        </div>
+        </ng-template>
+   
+    
+  </div>

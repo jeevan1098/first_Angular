@@ -1,0 +1,14 @@
+.color-box {
+    width: 200px;
+    height: 100px;
+    border: 1px solid black;
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .radios {
+    margin-bottom: 10px;
+  }
+  

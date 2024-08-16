@@ -1,0 +1,10 @@
+<p>Data works!</p>
+<div class="container">
+  <div *ngFor="let product of productDat" class="product-item" [style.border]="ok">
+    <p><strong>Product ID:</strong> {{product.productId}}</p>
+    <p><strong>Product Name:</strong> {{product.productName}}</p>
+    <p><strong>Quantity:</strong> {{product.qty}}</p>
+    <p><strong>Price:</strong> {{product.productPrice}}</p>
+    <p><strong>Description:</strong> {{product.productDescription}}</p>
+  </div>
+</div>
