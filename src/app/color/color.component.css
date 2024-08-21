@@ -10,5 +10,9 @@
   
   .radios {
     margin-bottom: 10px;
+    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    padding: 10px;
   }
   

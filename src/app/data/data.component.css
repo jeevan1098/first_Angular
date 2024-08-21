@@ -1,0 +1,25 @@
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 3px;
+    margin: 3px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.product-item {
+    border: 1px solid black;
+    margin: 2px;
+    box-sizing: border-box;
+    width: calc(33.33% - 8px);
+}
+.alert {
+    color: #d9534f;
+    background-color: #f8d7da;
+    border: 1px solid #f5c6cb;
+    padding: 10px;
+    margin-top: 5px;
+    border-radius: 5px;
+    font-size: 14px;
+  }

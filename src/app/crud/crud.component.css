@@ -1,0 +1,58 @@
+/* Styling for product list */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 16px;
+    padding: 20px;
+  }
+  
+  .product-item {
+    border: 1px solid #ddd;
+    padding: 16px;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+  }
+
+  .update-form {
+    display: grid;
+    gap: 16px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+  }
+  
+  .form-group {
+    display: grid;
+    gap: 8px;
+  }
+  
+  .form-group label {
+    font-weight: bold;
+  }
+  
+  .update-form button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .update-form button:hover {
+    background-color: #0056b3;
+  }
+  
+  .update-form button[type="button"] {
+    background-color: #6c757d;
+  }
+  
+  .update-form button[type="button"]:hover {
+    background-color: #5a6268;
+  }
+
+body{
+    background-color: #5a6268;
+    color: #ddd;
+}

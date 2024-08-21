@@ -1,8 +1,10 @@
 
 
 <div class="color">
-  <app-color></app-color>
-  <app-data></app-data>
+   
+<app-reactive [x]="x" ></app-reactive>
+<input type="text" [(ngModel)]="x"> 
+<button (click)="changes()">Changes</button>
 </div>
  
 

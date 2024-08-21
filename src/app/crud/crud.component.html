@@ -1,0 +1,183 @@
+<!-- Create Form -->
+<div class="forms">
+    <h2>Create Product</h2>
+    <form (ngSubmit)="onSubmit()" #createProductForm="ngForm">
+      <div class="form-group">
+        <label for="productId">Product ID:</label>
+        <input
+          type="text"
+          class="form-control"
+          id="productId"
+          minlength="7"
+          required
+          [(ngModel)]="product.productId"
+          name="productId"
+          #productId="ngModel">
+        <div *ngIf="productId.invalid && productId.touched" class="alert">
+          <div *ngIf="productId.errors?.['required']">Product ID is required</div>
+          <div *ngIf="productId.errors?.['minlength']">Minimum 7 characters required</div>
+        </div>
+      </div>
+  
+      <div class="form-group">
+        <label for="productBrand">Brand:</label>
+        <input
+          type="text"
+          class="form-control"
+          id="productBrand"
+          required
+          [(ngModel)]="product.productBrand"
+          name="productBrand"
+          #productBrand="ngModel">
+        <div *ngIf="productBrand.invalid && productBrand.touched" class="alert">
+          <div *ngIf="productBrand.errors?.['required']">Brand is required</div>
+        </div>
+      </div>
+  
+      <div class="form-group">
+        <label for="productName">Name:</label>
+        <input
+          type="text"
+          class="form-control"
+          id="productName"
+          required
+          [(ngModel)]="product.productName"
+          name="productName"
+          #productName="ngModel">
+        <div *ngIf="productName.invalid && productName.touched" class="alert">
+          <div *ngIf="productName.errors?.['required']">Name is required</div>
+        </div>
+      </div>
+  
+      <div class="form-group">
+        <label for="productPrice">Price:</label>
+        <input
+          type="number"
+          class="form-control"
+          id="productPrice"
+          required
+          min="0"
+          [(ngModel)]="product.productPrice"
+          name="productPrice"
+          #productPrice="ngModel">
+        <div *ngIf="productPrice.invalid && productPrice.touched" class="alert">
+          <div *ngIf="productPrice.errors?.['required']">Price is required</div>
+          <div *ngIf="productPrice.errors?.['min']">Price cannot be negative</div>
+        </div>
+      </div>
+  
+      <div class="form-group">
+        <label for="productDescription">Description:</label>
+        <textarea
+          class="form-control"
+          id="productDescription"
+          required
+          minlength="10"
+          [(ngModel)]="product.productDescription"
+          name="productDescription"
+          #productDescription="ngModel"></textarea>
+        <div *ngIf="productDescription.invalid && productDescription.touched" class="alert">
+          <div *ngIf="productDescription.errors?.['required']">Description is required</div>
+          <div *ngIf="productDescription.errors?.['minlength']">Minimum 10 characters required</div>
+        </div>
+      </div>
+  
+      <div class="form-group">
+        <label for="qty">Quantity:</label>
+        <input
+          type="number"
+          class="form-control"
+          id="qty"
+          required
+          min="1"
+          [(ngModel)]="product.qty"
+          name="qty"
+          #qty="ngModel">
+        <div *ngIf="qty.invalid && qty.touched" class="alert">
+          <div *ngIf="qty.errors?.['required']">Quantity is required</div>
+          <div *ngIf="qty.errors?.['min']">Quantity must be at least 1</div>
+        </div>
+      </div>
+  
+      <button type="submit" [disabled]="!createProductForm.form.valid">Submit</button>
+    </form>
+  </div>
+  
+  <!-- Product List -->
+  <div class="get">
+    <h2>Product List</h2>
+    <div class="product-grid">
+      <div *ngFor="let product of products" class="product-item">
+        <div><strong>Product ID:</strong> {{ product.productId }}</div>
+        <div><strong>Brand:</strong> {{ product.productBrand }}</div>
+        <div><strong>Name:</strong> {{ product.productName }}</div>
+        <div><strong>Price:</strong> {{ product.productPrice }}</div>
+        <div><strong>Description:</strong> {{ product.productDescription }}</div>
+        <div><strong>Quantity:</strong> {{ product.qty }}</div>
+        <div>
+          <button (click)="editProduct(product)">Edit</button>
+          <button (click)="onDelete(product.productId)">Delete</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Update Form -->
+  <div class="update" *ngIf="selectedProduct">
+    <h2>Edit Product</h2>
+    <form (ngSubmit)="onUpdate()" #updateProductForm="ngForm" class="update-form">
+      <div class="form-group">
+        <label for="productBrand">Brand:</label>
+        <input
+          type="text"
+          id="productBrand"
+          [(ngModel)]="selectedProduct.productBrand"
+          name="productBrand"
+          required>
+      </div>
+  
+      <div class="form-group">
+        <label for="productName">Name:</label>
+        <input
+          type="text"
+          id="productName"
+          [(ngModel)]="selectedProduct.productName"
+          name="productName"
+          required>
+      </div>
+  
+      <div class="form-group">
+        <label for="productPrice">Price:</label>
+        <input
+          type="number"
+          id="productPrice"
+          [(ngModel)]="selectedProduct.productPrice"
+          name="productPrice"
+          required>
+      </div>
+  
+      <div class="form-group">
+        <label for="productDescription">Description:</label>
+        <input
+          type="text"
+          id="productDescription"
+          [(ngModel)]="selectedProduct.productDescription"
+          name="productDescription"
+          required>
+      </div>
+  
+      <div class="form-group">
+        <label for="qty">Quantity:</label>
+        <input
+          type="number"
+          id="qty"
+          [(ngModel)]="selectedProduct.qty"
+          name="qty"
+          required>
+      </div>
+  
+      <button type="submit">Update</button>
+      <button type="button" (click)="cancelEdit()">Cancel</button>
+    </form>
+  </div>
+  

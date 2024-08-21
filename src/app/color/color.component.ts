@@ -7,6 +7,7 @@ import { Component } from '@angular/core';
 })
 export class ColorComponent {
   onColorChange(){
+    
     document.body.style.backgroundColor = "blue";
   }
   onColorChanges(){

@@ -1,5 +1,5 @@
 
-import { Component } from '@angular/core';
+import { AfterContentChecked, AfterContentInit, AfterViewChecked, AfterViewInit, Component, DoCheck, Input, OnChanges, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
  
 @Component({
@@ -7,12 +7,14 @@ import { FormControl } from '@angular/forms';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit,OnChanges,DoCheck,AfterContentInit,AfterContentChecked,AfterViewInit,AfterViewChecked{
   title = 'Kendrick';
   company = 'UST';
   location = 'Welcome to TVM !';
   productid = "HP105NX";
   description = "i7 16gb 512gb";
+   xdata:String = "hello";
+  
  
   quantity = 200;
   availability = this.quantity > 0;
@@ -34,5 +36,36 @@ export class AppComponent {
   printOrder(x: any): void{
     console.log(x, ' : quantity of order placed');
   }
- 
+  x="hi"
+ changes():void{
+    this.x="helloJeevanBabus";
+
+  }
+  ngOnInit(): void {
+    console.log(" Parent Init");
+  }
+  ngOnChanges(): void {
+    console.log("Parent OnChanges");
+  }
+  ngDoCheck(): void {
+    console.log("Parent DoCheck");
+  }
+  ngAfterContentInit(): void {
+    console.log("Parent contentinit ");
+  }
+  ngAfterContentChecked(): void {
+    console.log("Parent contentchecked ");
+  }
+  ngAfterViewInit(): void {
+    console.log("Parent viewinit ");
+  }
+  ngAfterViewChecked(): void {
+    console.log("Parent viewchecked ");
+    console.log("--------")
+  }
+  constructor(){
+    console.log("Parent constructor ");
+  }
+
+  
 }

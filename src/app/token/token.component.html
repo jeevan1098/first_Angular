@@ -1,0 +1,9 @@
+<div>
+    <h1>Authentication Token</h1>
+    <p *ngIf="token; else noToken">Token: {{ token }}</p>
+    <ng-template #noToken>
+      <p>No token available.</p>
+    </ng-template>
+  </div>
+  
+  

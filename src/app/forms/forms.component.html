@@ -1,0 +1,171 @@
+<!-- Top buttons (fixed) -->
+<div class="head d-flex flex-row justify-content-center m-3 p-3" [ngClass]="{'d-none': !showheader}">
+  <div class="h1 p-4">
+    <button (click)="showLoginForm()">LOGIN</button>
+  </div>
+  <div class="h1 p-4">
+    <button (click)="showSignupForm()">SIGNUP</button>
+  </div>
+</div>
+
+<!-- Login form -->
+<div class="login d-flex flex-column align-items-center justify-content-center" [ngClass]="{'d-none': !showLogin}">
+  <div class="user m-1 p-4">
+    <label for="username"><h4>Username:</h4></label>
+    <input
+      class="ms-3"
+      type="text"
+      name="username"
+      id="username"
+      required
+      minlength="5"
+      [(ngModel)]="loginusername"
+      #loginUsername="ngModel">
+    <div *ngIf="loginUsername.invalid && loginUsername.touched" class="alert">
+      <div *ngIf="loginUsername.errors?.['required']">*Username is required</div>
+      <div *ngIf="loginUsername.errors?.['minlength']">*Username must be at least 5 characters</div>
+    </div>
+  </div>
+  <div class="pass m-1 p-4">
+    <label for="password"><h4>Password:</h4></label>
+    <input
+      class="ms-3"
+      type="password"
+      name="password"
+      id="password"
+      required
+      minlength="8"
+      [(ngModel)]="loginpassword"
+      #loginPassword="ngModel">
+    <div *ngIf="loginPassword.invalid && loginPassword.touched" class="alert">
+      <div *ngIf="loginPassword.errors?.['required']">*Password is required</div>
+      <div *ngIf="loginPassword.errors?.['minlength']">*Password must be at least 8 characters</div>
+    </div>
+  </div>
+  <div class="forgot d-flex justify-content-around m-1 p-4">
+    <button (click)="loginSuccess()" [disabled]="loginUsername.invalid || loginPassword.invalid">LOGIN</button>
+    <a href="" target="_blank" rel="noopener noreferrer">Forgot password</a>
+  </div>
+</div>
+
+<!-- Signup form -->
+<div class="signup d-flex flex-column align-items-center justify-content-center" [ngClass]="{'d-none': !showSignup}">
+  <div class="user m-1 p-4">
+    <label for="username"><h4>Username:</h4></label>
+    <input
+      class="ms-3"
+      type="text"
+      name="username"
+      id="username"
+      [(ngModel)]="signupUsername"
+      required
+      minlength="5"
+      #signUpUsername="ngModel">
+    <div *ngIf="signUpUsername.invalid && signUpUsername.touched" class="alert">
+      <div *ngIf="signUpUsername.errors?.['required']">*Username is required</div>
+      <div *ngIf="signUpUsername.errors?.['minlength']">*Minimum 5 characters required</div>
+    </div>
+  </div>
+  <div class="fullname m-1 p-4">
+    <label for="fullname"><h4>Full Name:</h4></label>
+    <input
+      class="ms-3"
+      type="text"
+      name="fullname"
+      id="fullname"
+      [(ngModel)]="fullName"
+      #fullNameModel="ngModel">
+    <div *ngIf="fullNameModel.invalid && fullNameModel.touched" class="alert">
+      <div *ngIf="fullNameModel.errors?.['required']">*Full Name is required</div>
+    </div>
+  </div>
+  <div class="email m-1 p-4">
+    <label for="email"><h4>Email:</h4></label>
+    <input
+      class="ms-3"
+      type="email"
+      name="email"
+      id="email"
+      [(ngModel)]="email"
+      required
+      #emailModel="ngModel">
+    <div *ngIf="emailModel.invalid && emailModel.touched" class="alert">
+      <div *ngIf="emailModel.errors?.['required']">*Email is required</div>
+      <div *ngIf="emailModel.errors?.['email']">*Invalid email format</div>
+    </div>
+  </div>
+  <div class="phone m-1 p-4">
+    <label for="phone"><h4>Phone Number:</h4></label>
+    <input
+      class="ms-3"
+      type="tel"
+      name="phone"
+      id="phone"
+      [(ngModel)]="phone"
+      #phoneModel="ngModel">
+    <div *ngIf="phoneModel.invalid && phoneModel.touched" class="alert">
+      <div *ngIf="phoneModel.errors?.['required']">*Phone number is required</div>
+    </div>
+  </div>
+  <div class="address m-1 p-4">
+    <label for="address"><h4>Address:</h4></label>
+    <input
+      class="ms-3"
+      type="text"
+      name="address"
+      id="address"
+      [(ngModel)]="address"
+      #addressModel="ngModel">
+    <div *ngIf="addressModel.invalid && addressModel.touched" class="alert">
+      <div *ngIf="addressModel.errors?.['required']">*Address is required</div>
+    </div>
+  </div>
+  <div class="pass m-1 p-4">
+    <label for="password"><h4>Password:</h4></label>
+    <input
+      class="ms-3"
+      type="password"
+      name="password"
+      id="password"
+      [(ngModel)]="password"
+      required
+      minlength="8"
+      #passwordModel="ngModel">
+    <div *ngIf="passwordModel.invalid && passwordModel.touched" class="alert">
+      <div *ngIf="passwordModel.errors?.['required']">*Password is required</div>
+      <div *ngIf="passwordModel.errors?.['minlength']">*Password must be at least 8 characters</div>
+    </div>
+  </div>
+  <div class="confirm-pass m-1 p-4">
+    <label for="confirmPassword"><h4>Confirm Password:</h4></label>
+    <input
+      class="ms-3"
+      type="password"
+      name="confirmPassword"
+      id="confirmPassword"
+      [(ngModel)]="confirmPassword"
+      required
+      minlength="8"
+      #confirmPasswordModel="ngModel">
+    <div *ngIf="confirmPasswordModel.invalid && confirmPasswordModel.touched" class="alert">
+      <div *ngIf="confirmPasswordModel.errors?.['required']">*Confirm Password is required</div>
+      <div *ngIf="confirmPasswordModel.errors?.['minlength']">*Confirm Password must be at least 8 characters</div>
+    </div>
+  </div>
+  <div class="forgot d-flex justify-content-center m-1 p-4">
+    <button (click)="signupSuccess()" [disabled]="!signUpUsername.valid || !fullNameModel.valid || !emailModel.valid || !phoneModel.valid || !addressModel.valid || !passwordModel.valid || !confirmPasswordModel.valid">Sign Up</button>
+  </div>
+</div>
+
+<!-- Login success page -->
+<div class="loginpage" [ngClass]="{'d-none': !showLoginPage}">
+  <app-color></app-color>
+ <app-data></app-data>
+  <button (click)="goBackToForms()">BACK</button>
+</div>
+
+<!-- Signup success page -->
+<div class="signuppage" [ngClass]="{'d-none': !showSignupPage}">
+  <h1>SignUp success</h1>
+  <button (click)="goBackToForms()">BACK</button>
+</div>
